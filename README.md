@@ -1,2 +1,2 @@
 # OpenController
-Design of a complete RC Controller-Transmitter
+Design of a Controller-Transmitter for remotely controlled vehicles. 
