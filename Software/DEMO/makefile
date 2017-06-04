@@ -6,6 +6,7 @@ FILES= main.c \
 ../common/controller.c \
 ../common/controls.c \
 ../common/memory-buffers/src/bufferMemory.c \
+./adc.c \
 
 TARGET = DEMO
 

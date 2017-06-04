@@ -4,6 +4,8 @@
 #include "../common/controller.h"
 #include "../common/controls.h"
 
+#include "adc.h"
+
 int main(){
 	debugInfo("Hello LibreController");
 	//Initialise gpios
@@ -11,6 +13,7 @@ int main(){
 	
 	//Initialise timers
 	//Initialise ADC
+	adcInit();
 
 	return EXIT_SUCCESS;
 }
