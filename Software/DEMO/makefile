@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g -Wall -O0 -DDEMO
+CFLAGS=-g -Wall -O0 -DDEMO -DMAX_CHANNELS=10
 LIBRARY_PATH=../src/
 FILES= main.c \
 ../common/debug.c \

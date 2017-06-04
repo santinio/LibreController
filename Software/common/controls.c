@@ -1,6 +1,6 @@
 #include "controls.h"
 #include "stdbool.h"
-#include "bufferMemory.h"
+#include "memory-buffers/src/bufferMemory.h"
 #include "stdint.h"
 #include "stddef.h"
 //#include "nrf_log.h"
@@ -13,14 +13,13 @@ controller_t controller;
 static CONTROLS_STATE controlsState;
 
 buffer_t controlsBuffer;
-
 bool controlsInit(){
 int count=0;
 control_t control;
 	if(controlsState==CONTROLS_STATE_OFF){
 		/*Enable the controls*/
-		bufferCreate(&controlsBuffer,BUFFER_TYPE_LINKED,sizeof(control_t),controller.numberOfControls,&controlAlloc,&controlFree,&controlError);
-		for(count=0;count<controller.numberOfControls;count++){
+		bufferCreate(&controlsBuffer,BUFFER_TYPE_LINKED,sizeof(control_t),controller.numberOfChannels,&controlAlloc,&controlFree,&controlError);
+		for(count=0;count<controller.numberOfChannels;count++){
 			control.id=count;
 			if(bufferAddData(&controlsBuffer,&control,sizeof(control_t))!=BUFFER_STATUS_OK){
 				//NRF_LOG_INFO("Not enough memory to store controls\r\n");
@@ -34,6 +33,7 @@ control_t control;
 	}
 	return false;
 }
+
 bool controlsDeInit(){
 	if(controlsState==CONTROLS_STATE_STOPPED)
 		return true;

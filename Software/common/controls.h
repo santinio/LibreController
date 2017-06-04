@@ -11,7 +11,7 @@ typedef enum{
 }CONTROLS_STATE;
 
 typedef enum{
-	CONTROL_TYPE_GIMBAL,
+	CONTROL_TYPE_AXIS,
 	CONTROL_TYPE_TOGGLE,
 	CONTROL_TYPE_SWITCH,
 }CONTROL_TYPE;
@@ -22,6 +22,7 @@ typedef struct{
 	uint16_t minimum;
 	uint16_t maximum;
 	uint16_t center;
+	uint16_t value;
 	CONTROL_TYPE controlType; 
 	char *name;
 }control_t;

@@ -6,11 +6,12 @@
 
 #include "adc.h"
 
+controller_t controller;
 int main(){
 	debugInfo("Hello LibreController");
 	//Initialise gpios
 	//Initialise controller
-	
+	controllerCreate(&controller,5,4,1);
 	//Initialise timers
 	//Initialise ADC
 	adcInit();
