@@ -7,7 +7,7 @@
 #include "controller.h"
 //#define NUMBER_OF_CONTROLS 5
 
-extern controller_t controller;
+controller_t controller;
 
 //static uint8_t adcInputs[5] = {0,1,2,3,4};
 static CONTROLS_STATE controlsState;
