@@ -1,0 +1,3 @@
+[submodule "Software/common/memory-buffers"]
+	path = Software/common/memory-buffers
+	url = https://github.com/santinio/memory-buffers.git
