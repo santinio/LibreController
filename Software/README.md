@@ -1,1 +1,1 @@
-The main software development for the OpenController.
+The main software development for the LibreController.
