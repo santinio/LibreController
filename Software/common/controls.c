@@ -1,6 +1,6 @@
 #include "controls.h"
 #include "stdbool.h"
-#include "memory-buffers/bufferMemory.h"
+#include "bufferMemory.h"
 #include "stdint.h"
 #include "stddef.h"
 //#include "nrf_log.h"
