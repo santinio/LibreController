@@ -1,1 +1,1 @@
-The main Hardware development for the OpenController.
+The main Hardware development for the LibreController.
