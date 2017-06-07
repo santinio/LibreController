@@ -10,8 +10,10 @@ void adcInit(controller_t *controller){
 		DEBUG(DEBUG_NOTE,"ADC pin %d configured\n", k);
 }
 
-void adcGet(){
-
+void adcGet()
+{
+	/*Check if ADC is initialised*/
+	DEBUG(DEBUG_NOTE,"ADC sample\n");
 }
 
 void adcStart(){

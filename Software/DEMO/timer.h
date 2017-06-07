@@ -3,12 +3,14 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include "../common/debug.h"
 
 typedef struct{
-	void * (*callback);
+	void * (*callback)(void**);
 	uint16_t period;
 	uint16_t count;
+	bool active;
 }myTimer_t;
 
 void timerInit(myTimer_t*,void*,uint16_t);

@@ -6,13 +6,14 @@
 #include "timer.h"
 #include "adc.h"
 #include <stdbool.h>
+#include <unistd.h>
 
 myTimer_t timer;
 controller_t controller;
 
 void timerCallback()
 {
-	DEBUG(DEBUG_NOTE,"Timer callback triggeres.\n");
+	adcGet();
 }
 
 int main(){
@@ -22,7 +23,7 @@ int main(){
 	controllerCreate(&controller,5,4,1);
 	controlSetPin(&controller.control[0],15);
 	//Initialise timers
-	timerInit(&timer,timerCallback,500);
+	timerInit(&timer,&timerCallback,500);
 	//Initialise ADC
 	adcInit(&controller);
 	//Start timer
