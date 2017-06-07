@@ -18,7 +18,7 @@
 #define STRING2 DEBUG_WARNING_STRING
 #define STRING3 DEBUG_NOTE_STRING
 
-#define DEBUG(Y,X,...) printf(X,##__VA_ARGS__)
+#define DEBUG(Y,X,...) printf(X,##__VA_ARGS__);fflush(stdout);
 /*
 #ifdef DEMO
 #define DEBUG_(Y,X,...) do { \
