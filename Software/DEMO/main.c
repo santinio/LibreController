@@ -12,9 +12,10 @@ int main(){
 	//Initialise gpios
 	//Initialise controller
 	controllerCreate(&controller,5,4,1);
+	controlSetPin(controller->control[0],15);
 	//Initialise timers
 	//Initialise ADC
-	adcInit();
+	adcInit(&controller);
 
 	return EXIT_SUCCESS;
 }

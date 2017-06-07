@@ -22,11 +22,13 @@ void controllerCreate(controller_t *controller,uint8_t numberOfChannels,uint8_t 
 	{
 		controller->control[j].channel = j+1;
 		if(numberOfAxis-->0){
-			controller->control[j].controlType = CONTROL_TYPE_AXIS;
+			controlSetType(&controller->control[j],CONTROL_TYPE_AXIS);
+			//controller->control[j].controlType = CONTROL_TYPE_AXIS;
 			debugInfo("Axis added");
 		}
 		else if(numberOfToggles-->0){
-			controller->control[j].controlType = CONTROL_TYPE_TOGGLE;
+			controlSetType(&controller->control[j],CONTROL_TYPE_TOGGLE);
+			//controller->control[j].controlType = CONTROL_TYPE_TOGGLE;
 			debugInfo("Toggle added");
 		}
 	}
@@ -42,3 +44,4 @@ void controllerUpdateValues(controller_t *controller)
 {
 	
 }
+
