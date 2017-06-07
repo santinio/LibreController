@@ -2,6 +2,7 @@
 #define DEBUG_H_
 
 /*Generate platform specific debug functions*/
+#include <stdio.h>
 
 #define DEBUG_OFF 0
 #define DEBUG_ERROR 1
@@ -17,16 +18,24 @@
 #define STRING2 DEBUG_WARNING_STRING
 #define STRING3 DEBUG_NOTE_STRING
 
-#define DEBUG(X,...) printf(X,##__VA_ARGS__)
-
+#define DEBUG(Y,X,...) printf(X,##__VA_ARGS__)
+/*
 #ifdef DEMO
 #define DEBUG_(Y,X,...) do { \
     if(DEBUG_LEVEL>=Y)printf(X,##__VA_ARGS__); \
     }while(0)
 #elif PIC32
 #elif NRF52
-#endif
+#define DEBUG_(Y,X,...) do { \
+    if(DEBUG_LEVEL>=Y)printf(X,##__VA_ARGS__); \
+    }while(0)
+#else 
+#define DEBUG_(Y,X,...) do { \
+    if(DEBUG_LEVEL>=Y)printf(X,##__VA_ARGS__); \
+    }while(0)
 
+#endif
+*/
 
 void debugInfo(char*);
 void debugWarning(char*);

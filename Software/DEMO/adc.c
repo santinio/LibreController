@@ -7,7 +7,7 @@ void adcInit(controller_t *controller){
 	for(int k=0;k<controller->numberOfChannels;k++)
 		//Prepare every channel using controller->control[k].adcInput;
 		//debugInfo("ADC started");
-		DEBUG_(DEBUG_NOTE,"ADC pin %d configured\n", k);
+		DEBUG(DEBUG_NOTE,"ADC pin %d configured\n", k);
 }
 
 void adcGet(){

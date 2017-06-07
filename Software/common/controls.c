@@ -4,6 +4,7 @@
 #include "stdint.h"
 #include "stddef.h"
 #include "../common/debug.h"
+//#include <stdio.h>
 //#include "nrf_log.h"
 #include "controller.h"
 //#define NUMBER_OF_CONTROLS 5
@@ -74,5 +75,5 @@ void controlCreate(control_t *control,uint8_t adcChannel)
 }
 void controlSetPin(control_t *control,uint8_t pin)
 {
-	DEBUG(DEBUG_NOTE,"set pin");
+	DEBUG(DEBUG_NOTE,"set pin\n");
 }

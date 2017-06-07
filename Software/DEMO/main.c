@@ -8,11 +8,11 @@
 
 controller_t controller;
 int main(){
-	debugInfo("Hello LibreController");
+	DEBUG(DEBUG_NOTE,"Hello LibreController\n");
 	//Initialise gpios
 	//Initialise controller
 	controllerCreate(&controller,5,4,1);
-	controlSetPin(controller->control[0],15);
+	controlSetPin(&controller.control[0],15);
 	//Initialise timers
 	//Initialise ADC
 	adcInit(&controller);
