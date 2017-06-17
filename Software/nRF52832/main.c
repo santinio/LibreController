@@ -87,6 +87,8 @@
 #include "../common/debug.h"
 #include "../common/controller.h"
 #include "../common/controls.h"
+#include "adc.h"
+#include "timer.h"
 
 #define CALIBRATE_LOOPS 3
 
@@ -118,7 +120,7 @@
 
 #define DEAD_BEEF                        0xDEADBEEF                                 /**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
 
-//myTimer_t timer;
+myTimer_t timer;
 controller_t controller;
 static uint8_t calibratingLoops;
 
@@ -763,7 +765,7 @@ void initADC(){
 void timerCallback()
 {
 	/*Simplified way to get the data and load them to the controller*/
-	//adcGet(&controller);
+	adcGet(&controller);
 	if(calibratingLoops++==0)
 	//if(controller.calibrated==false && controller.calibrating == false)
 	{
@@ -810,13 +812,13 @@ int main(void)
     controllerCreate(&controller,5,4,1);
     controlSetPin(&controller.control[0],15);
     //Initialise timers
-    //timerInit(&timer,&timerCallback,500);
+    timerInit(&timer,&timerCallback,500);
     //Initialise ADC
-    //adcInit(&controller);
+    adcInit(&controller);
     //Start the ADC
-    //adcStart();
+    adcStart();
     //Start timer
-    //timerStart(&timer);
+    timerStart(&timer);
     advertising_start();
 
     // Enter main loop.
