@@ -10,6 +10,8 @@
 //#define NUMBER_OF_CONTROLS 5
 
 controller_t controller;
+#define MIN_CONTROL_VALUE 0
+#define MAX_CONTROL_VALUE 1024
 
 //static uint8_t adcInputs[5] = {0,1,2,3,4};
 static CONTROLS_STATE controlsState;
@@ -71,15 +73,17 @@ void controlSetChannel(control_t *control, uint8_t channel)
 {
 	control->channel = channel;
 }
-void controlCreate(control_t *control,uint8_t adcChannel)
+void controlCreate(control_t *control)
 {
-
+	/*A bad way to force calibration*/
+	control->minimum = MAX_CONTROL_VALUE;
+	control->maximum = MIN_CONTROL_VALUE;
 }
 void controlSetPin(control_t *control,uint8_t pin)
 {
 	DEBUG(DEBUG_NOTE,"set pin\n");
 }
-void controlCalibrate(control_t *control,uint16_t min, uint16_t max, uint16_t center)
+void controlCalibrateCalculate(control_t *control,uint16_t min, uint16_t max, uint16_t center)
 {
 	control->minimum = min;
 	control->maximum = max;
@@ -89,6 +93,24 @@ void controlCalibrate(control_t *control,uint16_t min, uint16_t max, uint16_t ce
 	control->offset = min;
 	DEBUG(DEBUG_NOTE,"Channel %d multiplier = %f offset = %d\n",control->channel,control->multiplier,control->offset);
         DEBUG(DEBUG_NOTE,"calibrated\n");
+}
+
+void controlCalibrate(control_t *control)
+{
+	if(control->adcInput>control->maximum)
+	{
+		control->maximum = control->adcInput;
+		DEBUG(DEBUG_NOTE,"New max on channel %d\n",control->channel);
+	}
+	else if(control->adcInput<control->minimum)
+	{
+		control->minimum = control->adcInput;
+		DEBUG(DEBUG_NOTE,"New min on channel %d\n",control->channel);
+	}
+	else
+	{
+	}
+
 }
 
 void controlCalculate(control_t *control)

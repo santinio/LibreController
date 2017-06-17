@@ -41,8 +41,9 @@ void controlFree();
 void controlError();
 void controlSetType(control_t*,CONTROL_TYPE);
 void controlSetChannel(control_t*, uint8_t);
-void controlCreate(control_t*,uint8_t);
+void controlCreate(control_t*);
 void controlSetPin(control_t*,uint8_t);
-void controlCalibrate(control_t*,uint16_t,uint16_t,uint16_t);
+void controlCalibrateCalculate(control_t*,uint16_t,uint16_t,uint16_t);
+void controlCalibrate(control_t*);
 void controlCalculate(control_t*);
 #endif

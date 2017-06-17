@@ -24,6 +24,7 @@ void controllerCreate(controller_t *controller,uint8_t numberOfChannels,uint8_t 
 	controller->active = true;
 	for(int j=0;j<numberOfChannels;j++)
 	{
+		controlCreate(&controller->control[j]);
 		controller->control[j].channel = j+1;
 		if(numberOfAxis-->0){
 			controlSetType(&controller->control[j],CONTROL_TYPE_AXIS);
@@ -71,9 +72,15 @@ void controllerUpdateValues(controller_t *controller)
 	{
 		for(int j=0;j<controller->numberOfChannels;j++)
  	        {
-			controlCalibrate(&controller->control[j],testDataMin[j],testDataMax[j],testData[j]);
-			
+			controlCalibrate(&controller->control[j]);
         	}
+	}
+	else if((controller->calibrating == false)&&(controller->calibrated==false))
+	{
+		for(int j=0;j<controller->numberOfChannels;j++)
+                {
+                        //controlCalibrate(&controller->control[j]);
+                }
 	}
 	else
 	{
