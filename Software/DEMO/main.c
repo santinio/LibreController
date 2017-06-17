@@ -26,6 +26,7 @@ void timerCallback()
 	if((calibratingLoops>CALIBRATE_LOOPS)&&(controller.calibrating==true))
 	{
 		controllerCalibrateStop(&controller);
+		
 		goto update;
 	}
 	update:

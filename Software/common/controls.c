@@ -83,14 +83,14 @@ void controlSetPin(control_t *control,uint8_t pin)
 {
 	DEBUG(DEBUG_NOTE,"set pin\n");
 }
-void controlCalibrateCalculate(control_t *control,uint16_t min, uint16_t max, uint16_t center)
+void controlCalibrateCalculate(control_t *control)
 {
-	control->minimum = min;
-	control->maximum = max;
-	control->center = center;
-	uint16_t space = max-min;
+	//control->minimum = min;
+	//control->maximum = max;
+	//control->center = center;
+	uint16_t space = control->maximum-control->minimum;
 	control->multiplier = (float)1024/space;
-	control->offset = min;
+	control->offset = control->minimum;;
 	DEBUG(DEBUG_NOTE,"Channel %d multiplier = %f offset = %d\n",control->channel,control->multiplier,control->offset);
         DEBUG(DEBUG_NOTE,"calibrated\n");
 }
@@ -100,17 +100,13 @@ void controlCalibrate(control_t *control)
 	if(control->adcInput>control->maximum)
 	{
 		control->maximum = control->adcInput;
-		DEBUG(DEBUG_NOTE,"New max on channel %d\n",control->channel);
+		DEBUG(DEBUG_NOTE,"New max on channel %d %d\n",control->channel,control->maximum);
 	}
-	else if(control->adcInput<control->minimum)
+	if(control->adcInput<control->minimum)
 	{
 		control->minimum = control->adcInput;
-		DEBUG(DEBUG_NOTE,"New min on channel %d\n",control->channel);
+		DEBUG(DEBUG_NOTE,"New min on channel %d %d\n",control->channel,control->minimum);
 	}
-	else
-	{
-	}
-
 }
 
 void controlCalculate(control_t *control)

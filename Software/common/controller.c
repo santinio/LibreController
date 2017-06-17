@@ -58,7 +58,7 @@ void controllerCalibrateStop(controller_t *controller)
 	if(controller->calibrating)
 	{
 		controller->calibrating = false;
-		controller->calibrated = true;
+		controller->calibrated = false;
 		DEBUG(DEBUG_NOTE,"Calibrated\n");
 	}
 	else
@@ -79,8 +79,9 @@ void controllerUpdateValues(controller_t *controller)
 	{
 		for(int j=0;j<controller->numberOfChannels;j++)
                 {
-                        //controlCalibrate(&controller->control[j]);
+                        controlCalibrateCalculate(&controller->control[j]);
                 }
+		controller->calibrated= true;
 	}
 	else
 	{
