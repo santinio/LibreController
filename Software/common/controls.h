@@ -24,6 +24,8 @@ typedef struct{
 	uint16_t minimum;
 	uint16_t maximum;
 	uint16_t center;
+	uint16_t offset;
+	float multiplier;
 	uint16_t value;
 	uint16_t adcInput;
 	CONTROL_TYPE controlType; 
@@ -41,4 +43,6 @@ void controlSetType(control_t*,CONTROL_TYPE);
 void controlSetChannel(control_t*, uint8_t);
 void controlCreate(control_t*,uint8_t);
 void controlSetPin(control_t*,uint8_t);
+void controlCalibrate(control_t*,uint16_t,uint16_t,uint16_t);
+void controlCalculate(control_t*);
 #endif

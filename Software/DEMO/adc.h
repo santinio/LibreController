@@ -4,7 +4,7 @@
 #include "../common/controller.h"
 
 void adcInit(controller_t*);
-void adcGet();
+void adcGet(controller_t*);
 void adcStart();
 
 #endif

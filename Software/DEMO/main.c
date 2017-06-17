@@ -13,7 +13,20 @@ controller_t controller;
 
 void timerCallback()
 {
-	adcGet();
+	/*Simplified way to get the data and load them to the controller*/
+	adcGet(&controller);
+	if(controller.calibrated==false && controller.calibrating == false)
+	{
+		controllerCalibrateStart(&controller);
+		goto update;
+	}
+	if(controller.calibrating==true)
+	{
+		controllerCalibrateStop(&controller);
+		goto update;
+	}
+	update:
+		controllerUpdateValues(&controller);	
 }
 
 int main(){
@@ -26,8 +39,11 @@ int main(){
 	timerInit(&timer,&timerCallback,500);
 	//Initialise ADC
 	adcInit(&controller);
+	//Start the ADC
+	adcStart();
 	//Start timer
 	timerStart(&timer);
+
 	while(true)
 	{
 		sleep(1);

@@ -13,6 +13,8 @@ controller_t controller;
 
 //static uint8_t adcInputs[5] = {0,1,2,3,4};
 static CONTROLS_STATE controlsState;
+//const uint16_t testDataMin[MAX_CHANNELS] = {0,15,242,12,0,0,0};
+//const uint16_t testDataMax[MAX_CHANNELS] = {1024,864,1100,1000,1024};
 
 buffer_t controlsBuffer;
 bool controlsInit(){
@@ -76,4 +78,20 @@ void controlCreate(control_t *control,uint8_t adcChannel)
 void controlSetPin(control_t *control,uint8_t pin)
 {
 	DEBUG(DEBUG_NOTE,"set pin\n");
+}
+void controlCalibrate(control_t *control,uint16_t min, uint16_t max, uint16_t center)
+{
+	control->minimum = min;
+	control->maximum = max;
+	control->center = center;
+	uint16_t space = max-min;
+	control->multiplier = (float)1024/space;
+	control->offset = min;
+	DEBUG(DEBUG_NOTE,"Channel %d multiplier = %f offset = %d\n",control->channel,control->multiplier,control->offset);
+        DEBUG(DEBUG_NOTE,"calibrated\n");
+}
+
+void controlCalculate(control_t *control)
+{
+	control->value = (control->adcInput - control->offset) * control->multiplier;
 }
