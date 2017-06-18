@@ -1,14 +1,12 @@
 CC=gcc
 CFLAGS=-g -Wall -O0 -DDEMO -DMAX_CHANNELS=10 -DDEBUG_LEVEL=DEBUG_NOTE
 LIBRARY_PATH=../src/
-FILES= main.c \
+FILES= testFilters.c \
 ../common/debug.c \
 ../common/controller.c \
 ../common/controls.c \
 ../common/filters.c \
 ../common/memory-buffers/src/bufferMemory.c \
-./adc.c \
-./timer.c \
 
 LIBS = -lpthread \
 
