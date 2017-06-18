@@ -11,6 +11,7 @@ typedef struct{
 	uint16_t period;
 	uint16_t count;
 	bool active;
+	bool configured;
 }myTimer_t;
 
 void timerInit(myTimer_t*,void*,uint32_t);
