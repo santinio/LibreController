@@ -132,7 +132,7 @@ static nrf_ble_gatt_t                    m_gatt;                                
 // YOUR_JOB: Use UUIDs for service(s) used in your application.
 static ble_uuid_t m_adv_uuids[] = {{BLE_UUID_DEVICE_INFORMATION_SERVICE, BLE_UUID_TYPE_BLE}}; /**< Universally unique service identifiers. */
 
-static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
+//static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
 
 /**@brief Callback function for asserts in the SoftDevice.
  *
@@ -743,7 +743,7 @@ static void power_manage(void)
     ret_code_t err_code = sd_app_evt_wait();
     APP_ERROR_CHECK(err_code);
 }
-
+/*
 void initADC(){
     ret_code_t err_code;
     nrf_saadc_channel_config_t channel_config =
@@ -762,6 +762,7 @@ void initADC(){
     APP_ERROR_CHECK(err_code);
 	NRF_LOG_INFO("ADC initialised\r\n");
 }
+*/
 void timerCallback()
 {
 	/*Simplified way to get the data and load them to the controller*/
