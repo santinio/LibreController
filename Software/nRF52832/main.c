@@ -91,7 +91,7 @@
 #include "timer.h"
 
 #define CALIBRATE_LOOPS 3
-
+#define SEC_1 1000000
 //#define NUMBER_OF_CONTROLS 5
 
 #define SAMPLES_IN_BUFFER 5
@@ -812,7 +812,7 @@ int main(void)
     controllerCreate(&controller,5,4,1);
     controlSetPin(&controller.control[0],15);
     //Initialise timers
-    timerInit(&timer,&timerCallback,500);
+    timerInit(&timer,&timerCallback,SEC_1);
     //Initialise ADC
     adcInit(&controller);
     //Start the ADC
